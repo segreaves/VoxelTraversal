@@ -16,12 +16,15 @@ struct Ray
 class Grid
 {
 public:
-    Grid(int cellSize, int rows, int cols, float posX, float posY);
+    Grid(int cellSize, int rows, int cols, float posX = 0, float posY = 0);
 
     int cellSize() const { return m_cellSize; }
     int rows() const { return m_rows; }
     int cols() const { return m_cols; }
 
+    void setPosition(float x, float y) { m_posX = x; m_posY = y; }
+    void setPosition(const sf::Vector2f& position) { setPosition(position.x, position.y); }
+    sf::Vector2f getPosition() const { return sf::Vector2f(m_posX, m_posY); }
     float getLeftEdge() const { return m_posX; }
     float getRightEdge() const { return m_posX + m_cols * m_cellSize; }
     float getTopEdge() const { return m_posY; }
