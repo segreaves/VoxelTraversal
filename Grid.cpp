@@ -138,6 +138,7 @@ std::vector<sf::Vector2i> Grid::getIntersect(const Ray& ray, float maxTraversal)
 
     // traverse the grid
     bool traversing = true;
+    float traversed = 0;
     while (traversing)
 	{
 		intersect.emplace_back(cell);
@@ -162,16 +163,18 @@ std::vector<sf::Vector2i> Grid::getIntersect(const Ray& ray, float maxTraversal)
 			pos.x += tMaxX * dir.x;
 			pos.y += tMaxX * dir.y;
 			cell.x += dir.x > 0 ? 1 : -1;
+            traversed += tMaxX;
 		}
 		else
 		{
 			pos.x += tMaxY * dir.x;
 			pos.y += tMaxY * dir.y;
 			cell.y += dir.y > 0 ? 1 : -1;
+            traversed += tMaxY;
 		}
 
         // check if we exited the grid
-        if (!contains(pos))
+        if (!contains(pos) || traversed >= maxTraversal)
             traversing = false;
 	}
 
