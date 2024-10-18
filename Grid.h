@@ -16,9 +16,9 @@ struct Ray
 class Grid
 {
 public:
-    Grid(int cellSize, int rows, int cols, float posX = 0, float posY = 0);
+    Grid(float cellSize, int rows, int cols, float posX = 0, float posY = 0);
 
-    int cellSize() const { return m_cellSize; }
+    float cellSize() const { return m_cellSize; }
     int rows() const { return m_rows; }
     int cols() const { return m_cols; }
 
@@ -37,6 +37,7 @@ public:
     sf::Vector2f getCellCoords(const sf::Vector2i& cell) const;
     std::vector<sf::Vector2i> getIntersect(const Ray& ray, float maxTraversal = std::numeric_limits<float>::infinity()) const;
 private:
-    int m_cellSize, m_rows, m_cols;
+    float m_cellSize;
+    int m_rows, m_cols;
     float m_posX, m_posY;
 };

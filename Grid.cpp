@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include <algorithm>
 
-Grid::Grid(int cellSize, int rows, int cols, float posX, float posY) :
+Grid::Grid(float cellSize, int rows, int cols, float posX, float posY) :
 	m_cellSize(cellSize),
 	m_rows(rows),
 	m_cols(cols),
