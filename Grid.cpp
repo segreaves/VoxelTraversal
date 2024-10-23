@@ -114,7 +114,7 @@ std::vector<sf::Vector2i> Grid::getIntersect(const Ray& ray, float maxTraversal)
         {
             const auto pointX = point.second.x - ray.m_start.x;
             const auto pointY = point.second.y - ray.m_start.y;
-            auto distance = std::sqrt(pointX * pointX + pointY * pointY);
+            const auto distance = std::sqrt(pointX * pointX + pointY * pointY);
             if (distance < minDistance)
             {
                 minDistance = distance;
